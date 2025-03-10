@@ -1,12 +1,12 @@
 #pragma once
 #include "block.hpp"
-// #include "utils.hpp"
-// #include <limits>
-// #include <string_view>
-// #include <array>
-// #include <type_traits>
-// #include <cstdint>
-// #include <bit>
+#include "utils.hpp"
+#include <limits>
+#include <string_view>
+#include <array>
+#include <type_traits>
+#include <cstdint>
+#include <bit>
 #include <experimental/simd>
 
 namespace reachability {
