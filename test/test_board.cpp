@@ -1,5 +1,7 @@
 // test_board.cpp
 #include "../board.hpp"
+#include "../findfinalattachableminostates.hpp"
+#include "test_utils.hpp"
 #include <iostream>
 #include <cassert>
 #include <string>
@@ -61,12 +63,42 @@ void test_to_string() {
     std::cout << "Test: to_string() passed.\n";
 }
 
+void test_example1_findfinalattachableminostates(){
+    constexpr auto example1 = merge_str({
+        "     X    ",
+        "XXX X     ",
+        "         X",
+        " X X  XX  ",
+        " X        ",
+        "    X X  X",
+        "X   XXX   ",
+        "X XX      ",
+        "       X  ",
+        "    X     ",
+        "  XX X X  ",
+        "X     XX  ",
+        "   X X    ",
+        " X      X ",
+        "    X     ",
+        "XX     X X",
+        "    X X   ",
+        "X  X      ",
+        "    XX    ",
+        "  X       ",
+        "       X  ",
+        " XXX XX X ",
+    });
+    auto positions = reachability::search::usable_positions<reachability::blocks::T>(example1);
+    printf(positions);
+}
+
 int main() {
     test_initial_state();
     test_set_get();
     test_operator_not();
     test_move();
     test_to_string();
+    test_example1_findfinalattachableminostates();
     
     std::cout << "All board tests passed.\n";
     return 0;
