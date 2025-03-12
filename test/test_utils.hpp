@@ -4,6 +4,17 @@
 #include <string_view>
 #include <chrono>
 #include "../board.hpp"
+
+#ifdef _MSC_VER
+#include <intrin.h>
+#else
+#include <x86intrin.h>
+#endif
+// 盤面の幅と高さを定義
+constexpr int WIDTH = 10, HEIGHT = 24;
+
+// BOARD型をreachability::board_t<WIDTH, HEIGHT>として定義
+using BOARD = reachability::board_t<WIDTH, HEIGHT>;
 constexpr auto merge_str(std::initializer_list<std::string_view> &&b_str) {
     std::array<char, WIDTH*HEIGHT> res = {};
     unsigned pos = 0;

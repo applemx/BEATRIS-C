@@ -115,9 +115,9 @@ namespace reachability::blocks {
       b.mino_offset
     };
   }
-//回転しないブロックのデータ
+ //回転しないブロックのデータ
   inline constexpr pure_kick<1, 0, 0> no_rotation;
-//各ブロックの定義(座標のみ)
+ //各ブロックの定義(座標のみ)
   inline constexpr pure_block<4, 4> T = {{{
     {{{-1, 0}, {0, 0}, {1, 0}, {0, 1}}},  // 0
     {{{0, 1}, {0, 0}, {0, -1}, {1, 0}}},  // R
