@@ -1,8 +1,8 @@
 CXX      = g++
 CXXFLAGS = -std=c++2b -Wall
 
-TARGET   = main
-SRCS     = main.cpp
+TARGET   = game
+SRCS     = game.cpp
 OBJS     = $(SRCS:.cpp=.o)
 
 all: $(TARGET)

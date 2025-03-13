@@ -47,6 +47,17 @@ namespace reachability {
     constexpr void set() {
       data[y / lines_per_under] |= under_t(1) << ((y % lines_per_under) * W + x);
     }
+
+    // //盤面の特定の座標にミノをセットする関数 最初のスポーンに使う予定＝＞いや、使えないじゃん。なぜならミノの情報がすべて消えてしまうから。後からデータを追うことができない
+    // template <typename RS,unsigned rotation, coord d>
+    // constexpr void set_mino_init(char b) {
+    //   constexpr auto block = RS::T;// ブロックのデータを取得
+    //   constexpr auto mino = block.minos[rotation];// ミノの座標を取得
+    //   static_for<mino.size()>([&][[gnu::always_inline]](auto i) {
+    //     set<mino[i][0] + d[0], mino[i][1] + d[1]>();// ミノの座標をセット
+    //   });
+    // }
+
     // 盤面の特定の座標 (x, y) の値を取得する関数
     // 0: 空, 1: ブロックあり, 2: 範囲外
     template <int x, int y>
@@ -157,7 +168,7 @@ namespace reachability {
       static_for<H>([&][[gnu::always_inline]](auto y) {
         std::string this_ret;
         static_for<W>([&][[gnu::always_inline]](auto x) {
-          this_ret += board.get<x, y>() ? "[]" : "  ";//ブロックがある場合は"[]", ない場合は空白
+          this_ret += board.get<x, y>() ? "[]" : "--";//ブロックがある場合は"[]", ない場合は--
         });
         this_ret += '\n';
         ret = this_ret + ret;// 盤面の上から順に表示するため、逆順に追加
