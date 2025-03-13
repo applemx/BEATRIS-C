@@ -98,11 +98,16 @@ void test_findfinalattachableminostates(){
     auto result = binary_bfs<RS, start_pos>(board, 'T');
     
     // 結果の検証と表示(上右下左4つ分作成)
+    // 0: 初期状態（スポーン時の向き）
+    // 1: 右回転（時計回りに90°）
+    // 2: 180°回転（逆さま）
+    // 3: 左回転（時計回りに270°、または反時計回りに90°）
+
     std::cout << "Found " << result.size() << " possible final positions for T block\n";
     // 結果の座標を詳細に表示
     if (result.size() > 0) {
         std::cout << "Details of found positions:\n";
-        for (size_t i = 0; i < result.size() && i < 3; ++i) {  // 最大3つまで表示（多すぎる場合）
+        for (size_t i = 0; i < result.size() && i < 4; ++i) { 
             // 元の盤面と結果を比較表示
             std::cout << "\nPosition " << (i+1) << ":\n";
             
@@ -119,6 +124,11 @@ void test_findfinalattachableminostates(){
     std::cout << "Test: find_final_attachable_mino_states() passed.\n";
 }
 
+void test_movebyhuman(){
+    //人間がミノを操作し、最終的な状態を確認する
+    
+}
+
 
 
 int main() {
@@ -128,6 +138,7 @@ int main() {
     test_move();
     test_to_string();
     test_findfinalattachableminostates();
+    test_movebyhuman();
     
     std::cout << "All board tests passed.\n";
     return 0;

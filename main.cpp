@@ -1,4 +1,3 @@
-// dummy.cpp
 #include "block.hpp"
 #include "board.hpp"
 
